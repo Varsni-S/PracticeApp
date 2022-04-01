@@ -1,13 +1,10 @@
-import {View, Text, Button} from 'react-native';
+import {View, Text} from 'react-native';
 import React from 'react';
 
-export default function Home({navigation}) {
+export default function Home() {
   return (
     <View>
-      <Button
-        title="Go to Movie List"
-        onPress={() => navigation.navigate('ApiCalls')}
-      />
+      <Text>Home</Text>
     </View>
   );
 }

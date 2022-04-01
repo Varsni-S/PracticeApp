@@ -6,14 +6,17 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
+  TouchableHighlight,
 } from 'react-native';
 import React, {useState} from 'react';
 import Header from '../components/Header';
 import {useSelector, useDispatch} from 'react-redux';
 import {setEmail, setPassword} from '../redux/actions';
+import {increment, decrement} from '../redux/actions';
 
 export default function Login() {
-  const {email, password} = useSelector(state => state.mainReducer);
+  const {email, password, counter} = useSelector(state => state.mainReducer);
+
   const dispatch = useDispatch();
 
   const [userEmail, setUserEmail] = useState('');
@@ -41,13 +44,31 @@ export default function Login() {
         />
       </View>
 
-      <View style={styles.button}>
+      <View style={{paddingBottom: 20}}>
         <Button
           title="Log in"
           onPress={() => (
             dispatch(setEmail(userEmail)), dispatch(setPassword(userPassword))
           )}
         />
+      </View>
+
+      {/* Counter app */}
+      <Button title="Counter App" />
+      <View style={{flexDirection: 'row', paddingTop: 20}}>
+        <TouchableHighlight
+          style={{...styles.button, backgroundColor: 'limegreen'}}
+          onPress={() => dispatch(increment())}>
+          <Text>Increment</Text>
+        </TouchableHighlight>
+
+        <Text> Counter: {counter} </Text>
+
+        <TouchableHighlight
+          style={{...styles.button, backgroundColor: 'red'}}
+          onPress={() => dispatch(decrement())}>
+          <Text>DECREMENT</Text>
+        </TouchableHighlight>
       </View>
     </View>
   );
@@ -61,7 +82,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   button: {
-    width: '80%',
-    margin: 30,
+    width: 100,
+    height: 50,
+    marginLeft: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    borderColor: 'black',
+    borderStyle: 'solid',
+    borderWidth: 2,
   },
 });
