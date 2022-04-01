@@ -1,12 +1,15 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import Header from './src/components/Header';
-import ApiCalls from './src/screens/ApiCalls';
+
+import Login from './src/screens/Login';
+
+import {Provider} from 'react-redux';
+import {store} from './src/redux/store';
 
 export default function App() {
   return (
-    <View>
-      <ApiCalls />
-    </View>
+    <Provider store={store}>
+      <Login />
+    </Provider>
   );
 }
