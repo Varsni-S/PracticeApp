@@ -27,7 +27,7 @@ export default function Login() {
   return (
     <View>
       <Header name="Login" />
-
+      {/* Login using redux */}
       <View>
         <TextInput
           style={styles.input}
@@ -53,7 +53,7 @@ export default function Login() {
         />
       </View>
 
-      {/* Counter app */}
+      {/* Counter app using redux */}
       <Button title="Counter App" />
       <View style={{flexDirection: 'row', paddingTop: 20}}>
         <TouchableHighlight
